@@ -1,0 +1,86 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="QLBanHang.master.cs" Inherits="IS385SC_HuaPhuMinhHieu_5649.QLBanHang" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+    <style>
+        .container {
+            display: flex
+        }
+
+        .left {
+            width: 30%;
+            float: left;
+            color: black
+        }
+
+        .center {
+            width: 40%;
+            float: left;
+        }
+
+        .redText {
+            color: red
+        }
+
+        .custom-link-button {
+            color: black;
+            text-decoration: underline
+        }
+
+            .custom-link-button:hover {
+                color: cornflowerblue;
+            }
+    </style>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <div class="container">
+            <div class="left">
+                <h2>DANH MỤC HOA</h2>
+                <asp:DataList ID="DataList1" runat="server">
+                    <ItemTemplate>
+                        <asp:LinkButton ID="LinkButton1" runat="server"
+                            Text='<%# Eval("TenDanhMuc") %>'
+                            CommandArgument='<%# Eval("MaDanhMuc") %>'
+                            OnClick="LinkButton1_Click"
+                            CssClass="custom-link-button">
+                        </asp:LinkButton>
+                    </ItemTemplate>
+                </asp:DataList>
+            </div>
+
+            <div class="center">
+                <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+                </asp:ContentPlaceHolder>
+            </div>
+            <div class="right">
+                <h2>Thông tin đăng nhập</h2>
+                <div>
+                    <asp:Label ID="Label1" runat="server" Text="Label">Đăng nhập: </asp:Label>
+                    <asp:TextBox ID="TextBox1" runat="server"></asp:TextBox>
+                </div>
+                <div>
+                    <asp:Label ID="Label2" runat="server" Text="Label">Mật khẩu: </asp:Label>
+                    <asp:TextBox ID="TextBox2" runat="server"></asp:TextBox>
+                </div>
+                <div>
+                    <h1>Thống kê truy cập</h1>
+                    <div>
+                        Số lượt truy cập:
+                        <asp:Label ID="lblSoLuotTC" runat="server" Text="" class="redText"></asp:Label>
+                    </div>
+                    <div>
+                        Số người đang online:
+                        <asp:Label ID="lblOnline" runat="server" Text="" class="redText"></asp:Label>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </form>
+</body>
+</html>
